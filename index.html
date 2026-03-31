@@ -634,10 +634,17 @@ async function toggleRec(ti,ty,btn){
   if(rT===-1){
     try{
       const st=await navigator.mediaDevices.getUserMedia({audio:true});
-      const ch=[],rec=new MediaRecorder(st);
+      const ch=[];
+      const mimeType=MediaRecorder.isTypeSupported('audio/webm;codecs=opus')?'audio/webm;codecs=opus':
+                     MediaRecorder.isTypeSupported('audio/webm')?'audio/webm':
+                     MediaRecorder.isTypeSupported('audio/mp4')?'audio/mp4':'';
+      const rec=mimeType?new MediaRecorder(st,{mimeType}):new MediaRecorder(st);
       rec.ondataavailable=e=>ch.push(e.data);
       rec.onstop=()=>{
-        vc[ti][ty]=new Blob(ch,{type:'audio/webm'});
+        const blob=new Blob(ch,{type:rec.mimeType||'audio/webm'});
+        vc[ti][ty]=blob;
+        if(vc[ti][ty+'_url'])URL.revokeObjectURL(vc[ti][ty+'_url']);
+        vc[ti][ty+'_url']=URL.createObjectURL(blob);
         st.getTracks().forEach(t=>t.stop());
         document.getElementById(`p_${ti}_${ty}`).classList.add('ready');
         btn.textContent='✅ Grabado';btn.className='rbtn done';
@@ -649,8 +656,12 @@ async function toggleRec(ti,ty,btn){
   }else{mrec?.stop();}
 }
 function playV(ti,ty){
+  const url=vc[ti][ty+'_url'];
+  if(url){new Audio(url).play().catch(()=>{});return;}
   const b=vc[ti][ty];if(!b)return;
-  new Audio(URL.createObjectURL(b)).play().catch(()=>{});
+  const newUrl=URL.createObjectURL(b);
+  vc[ti][ty+'_url']=newUrl;
+  new Audio(newUrl).play().catch(()=>{});
 }
 
 // ===== TERRAIN =====
