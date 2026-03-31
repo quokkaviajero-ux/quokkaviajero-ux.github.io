@@ -1,0 +1,16 @@
+{
+  "name": "BlobBoom!",
+  "short_name": "BlobBoom",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#1a1a2e",
+  "theme_color": "#1a1a2e",
+  "icons": [
+    {
+      "src": "https://placehold.co/512x512/FF6B6B/ffffff?text=BB",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
