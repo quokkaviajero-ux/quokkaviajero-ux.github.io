@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.blobboom.app",
+    "sha256_cert_fingerprints": [
+      "26:23:60:E3:4E:5B:5E:67:01:D5:FC:91:6C:DF:39:4B:B6:B0:64:49:6A:AA:16:9E:BF:8D:4C:DA:83:00:E3:FA"
+    ]
+  }
+}]
