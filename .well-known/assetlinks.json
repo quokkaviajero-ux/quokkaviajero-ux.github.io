@@ -4,7 +4,8 @@
     "namespace": "android_app",
     "package_name": "app.netlify.lively_dasik_08d835.twa",
     "sha256_cert_fingerprints": [
-      "26:23:60:E3:4E:5B:5E:67:01:D5:FC:91:6C:DF:39:4B:B6:B0:64:49:6A:AA:16:9E:BF:8D:4C:DA:83:00:E3:FA"
+      "26:23:60:E3:4E:5B:5E:67:01:D5:FC:91:6C:DF:39:4B:B6:B0:64:49:6A:AA:16:9E:BF:8D:4C:DA:83:00:E3:FA",
+      "55:5B:FD:88:23:FF:F1:8D:3E:2F:10:5D:8A:49:7E:A9:7C:AF:12:FE:B7:D3:12:5C:71:97:E5:A6:A4:5E:DC:6D"
     ]
   }
 }]
